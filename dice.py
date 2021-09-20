@@ -30,7 +30,7 @@ def roll():
 
 print ( roll ( ) )
 
-json_output = dict ( Total=roll ( ), Rolled=rolls )
+json_output = dict ( Total=roll ( ), Rolled=rolls, DicesRolled=dices )
 with open ( 'output.json', 'w' ) as jsonOut:
     json.dump ( json_output, jsonOut )
     jsonOut.close ( )
