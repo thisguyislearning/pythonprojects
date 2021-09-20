@@ -1,7 +1,6 @@
 import random
 import json
 
-
 with open ( "input.json" ) as jsonfile:
     jsonObject = json.load ( jsonfile )
     jsonfile.close ( )
@@ -9,19 +8,22 @@ with open ( "input.json" ) as jsonfile:
 total: int = jsonObject['Total']
 i: int = jsonObject['integer']
 rolls: int = jsonObject['rolls']
+dices: int = jsonObject['dices']
+
 
 def roll():
     total: int = jsonObject['Total']
     i: int = jsonObject['integer']
     rolls: int = jsonObject['rolls']
-    roll: int = 0;
+    dices: int = jsonObject['dices']
+    rolltotal: int = 0;
+    a: int = 1;
     while i < rolls:
-        dice1 = random.randint ( 1, 6 );
-        dice2 = random.randint ( 1, 6 );
-        dice3 = random.randint ( 1, 6 );
+        for a in range ( 0, dices ):
+            dice: int = random.randint ( 1, 6 );
+            rolltotal = rolltotal + dice;
         i += 1
-        roll: int = dice1 + dice2 + dice3;
-        total: int = total + roll;
+        total: int = rolltotal;
     return total
     # return json.dumps( total )
 
@@ -29,6 +31,6 @@ def roll():
 print ( roll ( ) )
 
 json_output = dict ( Total=roll ( ), Rolled=rolls )
-with open('output.json','w') as jsonOut:
-    json.dump(json_output, jsonOut)
-    jsonOut.close()
+with open ( 'output.json', 'w' ) as jsonOut:
+    json.dump ( json_output, jsonOut )
+    jsonOut.close ( )
